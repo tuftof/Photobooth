@@ -51,7 +51,7 @@ function Photobooth() {
             videoConstraints={videoConstraints}
           />
         </div>
-        <div className="absolute text-8xl font-bold text-white">5</div>
+        <div className="absolute text-8xl font-bold text-white"></div>
         <button
           onClick={capture}
           className="border-1 rounded-l border-gray-300 bg-gray-200 w-20 flex justify-center p-2 hover:bg-gray-300 m-1"
