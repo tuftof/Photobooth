@@ -12,7 +12,6 @@ const videoConstraints = {
 function Photobooth() {
   const [imgSrc, setImageSrc] = useState<string[]>([]);
 
-  const duration = 5;
   const navigate = useNavigate();
   const webcamRef = React.useRef<Webcam>(null);
 
@@ -52,9 +51,7 @@ function Photobooth() {
             videoConstraints={videoConstraints}
           />
         </div>
-        <div className="absolute text-8xl font-bold text-white">
-          {remaining}
-        </div>
+        <div className="absolute text-8xl font-bold text-white">5</div>
         <button
           onClick={capture}
           className="border-1 rounded-l border-gray-300 bg-gray-200 w-20 flex justify-center p-2 hover:bg-gray-300 m-1"
