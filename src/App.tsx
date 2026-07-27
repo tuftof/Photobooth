@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./App.css";
 import Photobooth from "./pages/Photobooth";
 import PhotoTemplate from "./pages/PhotoTemplate";

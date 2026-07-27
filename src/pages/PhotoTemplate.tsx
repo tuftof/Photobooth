@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import { useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import template from "../images/template1.png";
 import { toPng } from "html-to-image";

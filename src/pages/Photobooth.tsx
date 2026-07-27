@@ -11,16 +11,16 @@ const videoConstraints = {
 
 function Photobooth() {
   const [imgSrc, setImageSrc] = useState<string[]>([]);
-  const [captureStatus, setCaptureStatus] = useState(false);
 
   const duration = 5;
-  const [remaining, setRemaining] = useState(duration);
-
   const navigate = useNavigate();
-  const webcamRef = React.useRef(null);
+  const webcamRef = React.useRef<Webcam>(null);
 
   const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current?.getScreenshot();
+
+    if (!imageSrc) return;
+
     setImageSrc((img) => {
       if (img.length === 4) {
         return img;
@@ -37,7 +37,7 @@ function Photobooth() {
     }
 
     return;
-  }, [imgSrc, captureStatus, remaining]);
+  }, [imgSrc]);
 
   return (
     <>
