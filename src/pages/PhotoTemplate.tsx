@@ -3,18 +3,25 @@ import { useLocation, Link } from "react-router-dom";
 import template from "../images/template1.png";
 import { toPng } from "html-to-image";
 import LoadingPage from "../pages/LoadingPage";
+import { useReactToPrint } from "react-to-print";
+import { MdPrint, MdDownload, MdCamera } from "react-icons/md";
 function PhotoTemplate() {
+  //passing the images
+
   const location = useLocation();
   const images = location.state;
-  const [loading, setLoading] = useState(true);
-  const divRef = useRef<HTMLDivElement>(null);
 
+  //Loading image
+  const [loading, setLoading] = useState(true);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  //downloading image
   const downloadImage = useCallback(() => {
-    if (divRef.current === null) {
+    if (contentRef.current === null) {
       return;
     }
 
-    toPng(divRef.current, { cacheBust: true })
+    toPng(contentRef.current, { cacheBust: true })
       .then((dataUrl) => {
         const link = document.createElement("a");
         link.download = "photo.png";
@@ -24,7 +31,13 @@ function PhotoTemplate() {
       .catch((err) => {
         console.log(err);
       });
-  }, [divRef]);
+  }, [contentRef]);
+
+  //print image
+
+  const reactToPrintFn = useReactToPrint({
+    contentRef: contentRef,
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -40,8 +53,8 @@ function PhotoTemplate() {
         <div className="flex flex-col justify-center items-center h-screen gap-3 bg-slate-700">
           <div
             style={{ backgroundImage: `url(${template})` }}
-            className="bg-no-repeat bg-cover bg-center  h-150 w-100 animate-fadeIn"
-            ref={divRef}
+            className="bg-no-repeat bg-cover bg-center h-150 w-100 animate-fadeIn object-cover"
+            ref={contentRef}
           >
             <div
               style={{
@@ -86,14 +99,20 @@ function PhotoTemplate() {
 
           <div className="flex gap-5">
             <button
-              className="bg-yellow-400 p-2 rounded-lg text-l font-bold"
+              className="bg-yellow-400 p-2 rounded-lg text-l font-bold flex items-center gap-2"
+              onClick={reactToPrintFn}
+            >
+              <MdPrint /> Print
+            </button>
+            <button
+              className="bg-green-400 p-2 rounded-lg text-l font-bold flex items-center gap-2"
               onClick={downloadImage}
             >
-              Download image
+              <MdDownload /> Download
             </button>
             <Link to={"/"}>
-              <button className="bg-white p-2 rounded-lg text-l font-bold">
-                Retake Photo
+              <button className="bg-white p-2 rounded-lg text-l font-bold flex items-center gap-2">
+                <MdCamera /> Retake
               </button>
             </Link>
           </div>

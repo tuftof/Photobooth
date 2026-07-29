@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
-import { FaCamera } from "react-icons/fa6";
+import { MdCamera } from "react-icons/md";
 import { Audio } from "ts-audio";
 import countdownSound from "../audio/countdown.mp3";
 import captureSound from "../audio/captureSound.mp3";
@@ -98,7 +98,7 @@ function Photobooth() {
           onClick={captureCountdown}
           className="border-1 rounded-l bg-yellow-300 w-20 flex justify-center p-2 hover:bg-yellow-200 m-1"
         >
-          <FaCamera className="h-5 w-5" />
+          <MdCamera className="h-5 w-5" />
         </button>
       </div>
     </>

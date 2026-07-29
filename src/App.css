@@ -24,3 +24,21 @@
         transform: rotate(-10deg);
     }
 }
+
+
+@media print {
+  @page {
+    size: A6;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .print-page {
+    width: 105mm;
+    height: 148mm;
+  }
+}
+
