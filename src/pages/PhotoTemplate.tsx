@@ -1,5 +1,5 @@
 import { useRef, useCallback } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import template from "../images/template1.png";
 import { toPng } from "html-to-image";
 function PhotoTemplate() {
@@ -27,7 +27,7 @@ function PhotoTemplate() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-screen gap-3">
+      <div className="flex flex-col justify-center items-center h-screen gap-3 bg-slate-700">
         <div
           style={{ backgroundImage: `url(${template})` }}
           className="bg-no-repeat bg-cover bg-center  h-150 w-100"
@@ -74,12 +74,19 @@ function PhotoTemplate() {
           ></div>
         </div>
 
-        <button
-          className="bg-blue-300 p-2 rounded-lg text-l"
-          onClick={downloadImage}
-        >
-          Download image
-        </button>
+        <div className="flex gap-5">
+          <button
+            className="bg-yellow-400 p-2 rounded-lg text-l font-bold"
+            onClick={downloadImage}
+          >
+            Download image
+          </button>
+          <Link to={"/"}>
+            <button className="bg-white p-2 rounded-lg text-l font-bold">
+              Retake Photo
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );
