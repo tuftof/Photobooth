@@ -20,7 +20,7 @@ function Photobooth() {
   const [captureStatus, setCaptureStatus] = useState(false);
 
   useEffect(() => {
-    if (imgSrc.length === 4) {
+    if (imgSrc.length === 3) {
       setTimeout(() => {
         navigate("/download", { state: imgSrc });
       }, 1000);
@@ -64,7 +64,7 @@ function Photobooth() {
     if (!imageSrc) return;
 
     setImageSrc((img) => {
-      if (img.length === 4) {
+      if (img.length === 3) {
         return img;
       }
       return [...img, imageSrc];
@@ -75,7 +75,7 @@ function Photobooth() {
     <>
       <div className="flex flex-col justify-center items-center h-screen bg-slate-700">
         <span className="text-l text-yellow-300">
-          Shots: {imgSrc.length} / 4
+          Shots: {imgSrc.length} / 3
         </span>
         <div className="size-fit relative flex justify-center items-center">
           {captureStatus && (

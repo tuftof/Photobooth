@@ -52,49 +52,21 @@ function PhotoTemplate() {
       ) : (
         <div className="flex flex-col justify-center items-center h-screen gap-3 bg-slate-700">
           <div
-            style={{ backgroundImage: `url(${template})` }}
-            className="bg-no-repeat bg-cover bg-center h-150 w-100 animate-fadeIn object-cover"
+            className="bg-white h-150 w-100 animate-fadeIn grid grid-cols-2 gap-1"
             ref={contentRef}
           >
-            <div
-              style={{
-                backgroundImage: `url(${images[0]})`,
-                transform: "translate(2.12rem, 7.72rem) rotate(-3.9deg)",
-                height: "5.5rem",
-                width: "6.4rem",
-              }}
-              className="bg-cover bg-center bg-no-repeat "
-            ></div>
-
-            <div
-              style={{
-                backgroundImage: `url(${images[1]})`,
-                transform: "translate(2.57rem, 8.64rem) rotate(-3.9deg)",
-                height: "5.5rem",
-                width: "6.4rem",
-              }}
-              className="bg-cover bg-center bg-no-repeat "
-            ></div>
-
-            <div
-              style={{
-                backgroundImage: `url(${images[2]})`,
-                transform: "translate(14.71rem, -3.28rem) rotate(-3.9deg)",
-                height: "5.5rem",
-                width: "6.4rem",
-              }}
-              className="bg-cover bg-center bg-no-repeat "
-            ></div>
-
-            <div
-              style={{
-                backgroundImage: `url(${images[3]})`,
-                transform: "translate(15.18rem, -2.365rem) rotate(-3.9deg)",
-                height: "5.5rem",
-                width: "6.4rem",
-              }}
-              className="bg-cover bg-center bg-no-repeat "
-            ></div>
+            <div className="relative">
+              <img src={images[0]} className="translate-x-1/7 translate-y-20 object-fit bg-white absolute object-center" height="120" width="155" />
+              <img src={images[1]} className="translate-x-1/7 translate-y-51 object-fit bg-white absolute " height="120" width="155" />
+              <img src={images[2]} className="translate-x-1/7 translate-y-82  object-fit bg-white absolute" height="120" width="155" />
+              <img src={template} className="w-full h-full object-fit" />
+            </div>
+            <div>
+               <img src={images[0]} className="translate-x-1/7 translate-y-20 object-fit bg-white absolute" height="120" width="155" />
+              <img src={images[1]} className="translate-x-1/7 translate-y-51 object-fit bg-white absolute " height="120" width="155" />
+              <img src={images[2]} className="translate-x-1/7 translate-y-82  object-fit bg-white absolute" height="120" width="155" />
+              <img src={template} className="w-full h-full object-fit" />
+            </div>
           </div>
 
           <div className="flex gap-5">
