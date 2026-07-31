@@ -11,7 +11,7 @@ function LoadingPage() {
   });
   return (
     <>
-      <div className="h-screen bg-slate-700">
+      <div className="h-screen bg-slate-900">
         <div className="flex justify-center h-screen items-center flex-col animate-fadeIn">
           <img
             src={camera}

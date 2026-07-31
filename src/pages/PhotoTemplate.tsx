@@ -50,40 +50,95 @@ function PhotoTemplate() {
       {loading ? (
         <LoadingPage />
       ) : (
-        <div className="flex flex-col justify-center items-center h-screen gap-3 bg-slate-700">
+        <div className="flex flex-col justify-center items-center h-screen gap-3 bg-slate-900">
           <div
-            className="bg-white h-150 w-100 animate-fadeIn grid grid-cols-2 gap-1"
+            className="bg-white h-150 w-100 animate-fadeIn grid grid-cols-2"
             ref={contentRef}
           >
             <div className="relative">
-              <img src={images[0]} className="translate-x-1/7 translate-y-20 object-fit bg-white absolute object-center" height="120" width="155" />
-              <img src={images[1]} className="translate-x-1/7 translate-y-51 object-fit bg-white absolute " height="120" width="155" />
-              <img src={images[2]} className="translate-x-1/7 translate-y-82  object-fit bg-white absolute" height="120" width="155" />
+              <img
+                src={images[0]}
+                style={{
+                  top: "5.1rem",
+                  left: "1.4rem",
+                  height: "7.4rem",
+                  width: "9.7rem",
+                }}
+                className="bg-gray-200 absolute border-1 border-white object-center"
+              />
+              <img
+                src={images[1]}
+                style={{
+                  top: "12.8rem",
+                  left: "1.4rem",
+                  height: "7.4rem",
+                  width: "9.7rem",
+                }}
+                className="bg-gray-200 absolute border-1 border-white"
+              />
+              <img
+                src={images[2]}
+                style={{
+                  top: "20.5rem",
+                  left: "1.4rem",
+                  height: "7.4rem",
+                  width: "9.7rem",
+                }}
+                className="bg-gray-200 absolute border-1 border-white"
+              />
+
               <img src={template} className="w-full h-full object-fit" />
             </div>
-            <div>
-               <img src={images[0]} className="translate-x-1/7 translate-y-20 object-fit bg-white absolute" height="120" width="155" />
-              <img src={images[1]} className="translate-x-1/7 translate-y-51 object-fit bg-white absolute " height="120" width="155" />
-              <img src={images[2]} className="translate-x-1/7 translate-y-82  object-fit bg-white absolute" height="120" width="155" />
+            <div className="relative">
+              <img
+                src={images[0]}
+                style={{
+                  top: "5.1rem",
+                  left: "1.4rem",
+                  height: "7.4rem",
+                  width: "9.7rem",
+                }}
+                className="bg-gray-200 absolute border-1 border-white"
+              />
+              <img
+                src={images[1]}
+                style={{
+                  top: "12.8rem",
+                  left: "1.4rem",
+                  height: "7.4rem",
+                  width: "9.7rem",
+                }}
+                className="bg-gray-200 absolute border-1 border-white"
+              />
+              <img
+                src={images[2]}
+                style={{
+                  top: "20.5rem",
+                  left: "1.4rem",
+                  height: "7.4rem",
+                  width: "9.7rem",
+                }}
+                className="bg-gray-200 absolute border-1 border-white"
+              />
               <img src={template} className="w-full h-full object-fit" />
             </div>
           </div>
 
           <div className="flex gap-5">
             <button
-              className="bg-yellow-400 p-2 rounded-lg text-l font-bold flex items-center gap-2"
+              className="bg-yellow-400 p-2 rounded-lg text-l font-bold flex items-center gap-2 hover:bg-yellow-300"
               onClick={reactToPrintFn}
             >
               <MdPrint /> Print
             </button>
             <button
-              className="bg-green-400 p-2 rounded-lg text-l font-bold flex items-center gap-2"
+              className="bg-green-400 p-2 rounded-lg text-l font-bold flex items-center gap-2 hover:bg-green-300"
               onClick={downloadImage}
             >
               <MdDownload /> Download
             </button>
             <Link to={"/"}>
-              <button className="bg-white p-2 rounded-lg text-l font-bold flex items-center gap-2">
+              <button className="bg-mist-200 p-2 rounded-lg text-l font-bold flex items-center gap-2 hover:bg-white">
                 <MdCamera /> Retake
               </button>
             </Link>

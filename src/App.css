@@ -1,12 +1,20 @@
 @import 'tailwindcss';
 
 @theme {
-
 --animate-fadeIn: fadeIn 1s ease-in-out forwards;
 --animate-rotateCam: rotateCamera 2s ease-in-out infinite;
+--animate-refresh: refresh 1s ease-in-out forwards;
 }
 
 
+@keyframes refresh {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes fadeIn {
     from {
         opacity: 0;
