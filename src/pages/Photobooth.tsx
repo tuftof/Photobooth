@@ -106,7 +106,7 @@ function Photobooth() {
             <MdCamera className="h-5 w-5 text-color" />
           </button>
         </div>
-        <div className="flex flex-col bg-slate-800 m-8 rounded-xl shadow-xl/30 pt-5">
+        <div className="flex flex-col bg-slate-800 h-fit m-8 rounded-xl shadow-xl/30 pt-5 pb-5">
           <span className="text-yellow-400 text-xl font-bold ml-5 mb-5">
             Shot Preview
           </span>
@@ -123,10 +123,15 @@ function Photobooth() {
                     src={imgSrc[0]}
                     className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
                   />
-                  <MdRefresh
-                    className="h-15 w-15 absolute text-yellow-500 flex justify-self-center 
-            top-13 opacity-0 group-hover:opacity-100 group-hover:animate-refresh "
-                  />
+                  <div className="absolute flex justify-self-center top-12 flex-col">
+                    <MdRefresh
+                      className="h-13 w-13  text-yellow-500 
+             opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
+                    />
+                    <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                      Retake
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
@@ -142,10 +147,15 @@ function Photobooth() {
                     src={imgSrc[1]}
                     className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
                   />
-                  <MdRefresh
-                    className="h-15 w-15 absolute text-yellow-500 flex justify-self-center 
-            top-13 opacity-0 group-hover:opacity-100 group-hover:animate-refresh "
-                  />
+                  <div className="absolute flex justify-self-center top-12 flex-col">
+                    <MdRefresh
+                      className="h-13 w-13  text-yellow-500 
+             opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
+                    />
+                    <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                      Retake
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
@@ -162,10 +172,15 @@ function Photobooth() {
                     src={imgSrc[2]}
                     className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
                   />
-                  <MdRefresh
-                    className="h-15 w-15 absolute text-yellow-500 flex justify-self-center 
-            top-13 opacity-0 group-hover:opacity-100 group-hover:animate-refresh "
-                  />
+                  <div className="absolute flex justify-self-center top-12 flex-col">
+                    <MdRefresh
+                      className="h-13 w-13  text-yellow-500 
+             opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
+                    />
+                    <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                      Retake
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
@@ -174,7 +189,7 @@ function Photobooth() {
               <button
                 disabled={captureStatus}
                 className="w-70 flex text-black justify-center text-l font-bold hover:bg-yellow-400 items-center 
-                bg-yellow-500 rounded-xl h-10 gap-1"
+                bg-yellow-500 rounded-xl h-10 gap-1 mt-2"
                 onClick={() => {
                   navigate("/download", { state: imgSrc });
                 }}
