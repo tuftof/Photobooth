@@ -62,9 +62,9 @@ function PhotoTemplate() {
                   top: "5.1rem",
                   left: "1.4rem",
                   height: "7.4rem",
-                  width: "9.7rem",
+                  width: "9.75rem",
                 }}
-                className="bg-gray-200 absolute border-1 border-white object-center"
+                className="bg-gray-200 absolute border-1 border-white object-cover"
               />
               <img
                 src={images[1]}
@@ -72,9 +72,9 @@ function PhotoTemplate() {
                   top: "12.8rem",
                   left: "1.4rem",
                   height: "7.4rem",
-                  width: "9.7rem",
+                  width: "9.75rem",
                 }}
-                className="bg-gray-200 absolute border-1 border-white"
+                className="bg-gray-200 absolute border-1 border-white object-cover"
               />
               <img
                 src={images[2]}
@@ -82,9 +82,9 @@ function PhotoTemplate() {
                   top: "20.5rem",
                   left: "1.4rem",
                   height: "7.4rem",
-                  width: "9.7rem",
+                  width: "9.75rem",
                 }}
-                className="bg-gray-200 absolute border-1 border-white"
+                className="bg-gray-200 absolute border-1 border-white object-cover"
               />
 
               <img src={template} className="w-full h-full object-fit" />
@@ -96,9 +96,9 @@ function PhotoTemplate() {
                   top: "5.1rem",
                   left: "1.4rem",
                   height: "7.4rem",
-                  width: "9.7rem",
+                  width: "9.75rem",
                 }}
-                className="bg-gray-200 absolute border-1 border-white"
+                className="bg-gray-200 absolute border-1 border-white object-cover"
               />
               <img
                 src={images[1]}
@@ -106,9 +106,9 @@ function PhotoTemplate() {
                   top: "12.8rem",
                   left: "1.4rem",
                   height: "7.4rem",
-                  width: "9.7rem",
+                  width: "9.75rem",
                 }}
-                className="bg-gray-200 absolute border-1 border-white"
+                className="bg-gray-200 absolute border-1 border-white object-cover"
               />
               <img
                 src={images[2]}
@@ -116,9 +116,9 @@ function PhotoTemplate() {
                   top: "20.5rem",
                   left: "1.4rem",
                   height: "7.4rem",
-                  width: "9.7rem",
+                  width: "9.75rem",
                 }}
-                className="bg-gray-200 absolute border-1 border-white"
+                className="bg-gray-200 absolute border-1 border-white object-cover"
               />
               <img src={template} className="w-full h-full object-fit" />
             </div>

@@ -6,8 +6,8 @@ import { Audio } from "ts-audio";
 import countdownSound from "../audio/countdown.mp3";
 import captureSound from "../audio/captureSound.mp3";
 const videoConstraints = {
-  width: 1020,
-  height: 620,
+  width: 940,
+  height: 580,
   facingMode: "user",
 };
 
@@ -121,7 +121,7 @@ function Photobooth() {
                 <div>
                   <img
                     src={imgSrc[0]}
-                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
+                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50 "
                   />
                   <div className="absolute flex justify-self-center top-12 flex-col">
                     <MdRefresh
