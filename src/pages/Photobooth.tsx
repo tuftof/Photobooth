@@ -93,7 +93,7 @@ function Photobooth() {
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              mirrored={true}
+              mirrored={false}
               videoConstraints={videoConstraints}
             />
           </div>
