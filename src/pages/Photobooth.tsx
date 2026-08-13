@@ -19,10 +19,6 @@ function Photobooth() {
   const webcamRef = React.useRef<Webcam>(null);
   const [captureStatus, setCaptureStatus] = useState(false);
 
-  useEffect(() => {
-    return;
-  }, [imgSrc, remaining]);
-
   const captureCountdown = (index: number, retake: boolean) => {
     setCaptureStatus(true);
     let seconds = 5;
@@ -93,7 +89,7 @@ function Photobooth() {
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              mirrored={true}
+              mirrored={false}
               videoConstraints={videoConstraints}
             />
           </div>
@@ -121,7 +117,7 @@ function Photobooth() {
                 <div>
                   <img
                     src={imgSrc[0]}
-                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50 "
+                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
                   />
                   <div className="absolute flex justify-self-center top-12 flex-col">
                     <MdRefresh

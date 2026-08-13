@@ -5,6 +5,7 @@ import { toPng } from "html-to-image";
 import LoadingPage from "../pages/LoadingPage";
 import { useReactToPrint } from "react-to-print";
 import { MdPrint, MdDownload, MdCamera } from "react-icons/md";
+
 function PhotoTemplate() {
   //passing the images
 
