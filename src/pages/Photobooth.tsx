@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import { MdCamera, MdArrowForward, MdRefresh } from "react-icons/md";
 import { Audio } from "ts-audio";
 import countdownSound from "../audio/countdown.mp3";
 import captureSound from "../audio/captureSound.mp3";
-import { useRecordWebcam } from "react-record-webcam";
 
 const videoConstraints = {
   width: 940,
