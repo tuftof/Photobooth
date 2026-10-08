@@ -5,6 +5,8 @@ import { MdCamera, MdArrowForward, MdRefresh } from "react-icons/md";
 import { Audio } from "ts-audio";
 import countdownSound from "../audio/countdown.mp3";
 import captureSound from "../audio/captureSound.mp3";
+import { useRecordWebcam } from "react-record-webcam";
+
 const videoConstraints = {
   width: 940,
   height: 580,
@@ -28,6 +30,7 @@ function Photobooth() {
       file: countdownSound,
       volume: 0.5,
     });
+
     countdown.play();
     const interval = setInterval(() => {
       seconds--;
@@ -89,7 +92,7 @@ function Photobooth() {
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              mirrored={false}
+              mirrored={true}
               videoConstraints={videoConstraints}
             />
           </div>
