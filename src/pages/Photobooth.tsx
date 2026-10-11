@@ -58,7 +58,7 @@ function Photobooth() {
 
       if (!retake) {
         setImageSrc((img) => {
-          if (img.length === 3) {
+          if (img.length === 4) {
             return img;
           }
           return [...img, imageSrc];
@@ -77,128 +77,151 @@ function Photobooth() {
   );
 
   return (
-    <>
-      <div className="grid grid-cols-[72%_auto] bg-slate-900 content-center">
-        <div className="flex flex-col justify-center items-center h-screen ">
-          <div className="size-fit relative flex justify-center items-center">
-            {captureStatus && (
-              <div className="text-8xl font-bold text-yellow-300 absolute z-10">
-                {remaining}
+    <div className="flex h-screen bg-slate-900 justify-center">
+      <div className="flex flex-col justify-center items-center basis-2/3">
+        <div className="size-fit relative flex justify-center items-center">
+          {captureStatus && (
+            <div className="text-8xl font-bold text-yellow-300 absolute z-10">
+              {remaining}
+            </div>
+          )}
+          <Webcam
+            className="shadow-xl rounded-xl"
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            mirrored={true}
+            videoConstraints={videoConstraints}
+          />
+        </div>
+
+        <button
+          disabled={imgSrc.length >= 4}
+          onClick={() => captureCountdown(-1, false)}
+          className="border-1 rounded-l bg-yellow-300 w-20 flex justify-center p-2 hover:bg-yellow-400 mt-2"
+        >
+          <MdCamera className="h-5 w-5 text-color" />
+        </button>
+      </div>
+      <div className="flex flex-col bg-slate-800 mt-20 justify-center h-fit m-8 rounded-xl shadow-xl/30 pt-5 pb-5 basis-1/3">
+        <span className="text-yellow-400 text-xl font-bold ml-5 mb-5">
+          Shot Preview
+        </span>
+        <div className="gap-4 flex flex-wrap justify-center items-center">
+          <div
+            className="relative group h-40 w-55 bg-black shadow-xl/30 rounded-xl"
+            onClick={() => {
+              captureCountdown(0, true);
+            }}
+          >
+            {imgSrc[0] && (
+              <div>
+                <img
+                  src={imgSrc[0]}
+                  className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50 object-cover"
+                />
+                <div className="absolute flex justify-self-center top-12 flex-col">
+                  <MdRefresh
+                    className="h-13 w-13  text-yellow-500 
+             opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
+                  />
+                  <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                    Retake
+                  </span>
+                </div>
               </div>
             )}
-            <Webcam
-              className="shadow-xl rounded-xl"
-              audio={false}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              mirrored={true}
-              videoConstraints={videoConstraints}
-            />
           </div>
 
-          <button
-            disabled={captureStatus}
-            onClick={() => captureCountdown(-1, false)}
-            className="border-1 rounded-l bg-yellow-300 w-20 flex justify-center p-2 hover:bg-yellow-400 mt-2"
+          <div
+            className="relative group  h-40 w-55 bg-black shadow-xl/30 rounded-xl"
+            onClick={() => {
+              captureCountdown(1, true);
+            }}
           >
-            <MdCamera className="h-5 w-5 text-color" />
-          </button>
-        </div>
-        <div className="flex flex-col bg-slate-800 h-fit m-8 rounded-xl shadow-xl/30 pt-5 pb-5">
-          <span className="text-yellow-400 text-xl font-bold ml-5 mb-5">
-            Shot Preview
-          </span>
-          <div className="h-fit w-full gap-3 flex flex-col justify-center items-center">
-            <div
-              className="relative group h-40 w-70 bg-black shadow-xl/30 rounded-xl"
-              onClick={() => {
-                captureCountdown(0, true);
-              }}
-            >
-              {imgSrc[0] && (
-                <div>
-                  <img
-                    src={imgSrc[0]}
-                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
-                  />
-                  <div className="absolute flex justify-self-center top-12 flex-col">
-                    <MdRefresh
-                      className="h-13 w-13  text-yellow-500 
+            {imgSrc[1] && (
+              <div>
+                <img
+                  src={imgSrc[1]}
+                  className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50 object-cover"
+                />
+                <div className="absolute flex justify-self-center top-12 flex-col">
+                  <MdRefresh
+                    className="h-13 w-13  text-yellow-500 
              opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
-                    />
-                    <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
-                      Retake
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-            <div
-              className="relative group h-40 w-70 bg-black shadow-xl/30 rounded-xl"
-              onClick={() => {
-                captureCountdown(1, true);
-              }}
-            >
-              {imgSrc[1] && (
-                <div>
-                  <img
-                    src={imgSrc[1]}
-                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
                   />
-                  <div className="absolute flex justify-self-center top-12 flex-col">
-                    <MdRefresh
-                      className="h-13 w-13  text-yellow-500 
-             opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
-                    />
-                    <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
-                      Retake
-                    </span>
-                  </div>
+                  <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                    Retake
+                  </span>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+          </div>
 
-            <div
-              className="relative group h-40 w-70 bg-black shadow-xl/30 rounded-xl"
-              onClick={() => {
-                captureCountdown(2, true);
-              }}
-            >
-              {imgSrc[2] && (
-                <div>
-                  <img
-                    src={imgSrc[2]}
-                    className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50"
-                  />
-                  <div className="absolute flex justify-self-center top-12 flex-col">
-                    <MdRefresh
-                      className="h-13 w-13  text-yellow-500 
+          <div
+            className="relative group  h-40 w-55 bg-black shadow-xl/30 rounded-xl"
+            onClick={() => {
+              captureCountdown(2, true);
+            }}
+          >
+            {imgSrc[2] && (
+              <div>
+                <img
+                  src={imgSrc[2]}
+                  className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50 object-cover"
+                />
+                <div className="absolute flex justify-self-center top-12 flex-col">
+                  <MdRefresh
+                    className="h-13 w-13  text-yellow-500 
              opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
-                    />
-                    <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
-                      Retake
-                    </span>
-                  </div>
+                  />
+                  <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                    Retake
+                  </span>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
+          </div>
 
-            {imgSrc.length === 3 && (
-              <button
-                disabled={captureStatus}
-                className="w-70 flex text-black justify-center text-l font-bold hover:bg-yellow-400 items-center 
-                bg-yellow-500 rounded-xl h-10 gap-1 mt-2"
-                onClick={() => {
-                  navigate("/download", { state: imgSrc });
-                }}
-              >
-                Continue <MdArrowForward className="h-5 w-5" />
-              </button>
+          <div
+            className="relative group  h-40 w-55 bg-black shadow-xl/30 rounded-xl"
+            onClick={() => {
+              captureCountdown(2, true);
+            }}
+          >
+            {imgSrc[3] && (
+              <div>
+                <img
+                  src={imgSrc[3]}
+                  className="h-40 w-70 rounded-xl bg-black shadow-xl/30 group-hover:brightness-50 object-cover"
+                />
+                <div className="absolute flex justify-self-center top-12 flex-col">
+                  <MdRefresh
+                    className="h-13 w-13  text-yellow-500 
+             opacity-0 group-hover:opacity-100 group-hover:animate-refresh flex justify-self-center self-center"
+                  />
+                  <span className="text-white text-xl flex self-center justify-self-center opacity-0 group-hover:opacity-100">
+                    Retake
+                  </span>
+                </div>
+              </div>
             )}
           </div>
         </div>
+        {imgSrc.length === 4 && (
+          <button
+            disabled={captureStatus}
+            className="w-70 flex text-black justify-center text-l font-bold hover:bg-yellow-400 items-center 
+                bg-yellow-500 rounded-xl h-10 gap-1 mt-5 self-center "
+            onClick={() => {
+              navigate("/templateOptions", { state: imgSrc });
+            }}
+          >
+            Continue <MdArrowForward className="h-5 w-5" />
+          </button>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

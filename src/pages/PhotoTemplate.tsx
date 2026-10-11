@@ -1,7 +1,13 @@
 import { useRef, useCallback, useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-
-import template from "../images/sampleTemplate.png";
+import flowerElement from "../images/flower.png";
+import fabricElement from "../images/fabric.png";
+import signElement from "../images/sign.png";
+import starElement from "../images/star.png";
+import leftStarElement from "../images/leftStar.png";
+import firstTemplate from "../images/firstTemplateBg.png";
+import secondTemplate from "../images/secondTemplate.png";
+import thirdTemplate from "../images/thirdTemplate.png";
 import LoadingPage from "../pages/LoadingPage";
 import { useReactToPrint } from "react-to-print";
 import { MdPrint, MdDownload, MdCamera } from "react-icons/md";
@@ -10,7 +16,7 @@ function PhotoTemplate() {
   //passing the images
 
   const location = useLocation();
-  const images = location.state;
+  const { images, option } = location.state || {};
 
   //Loading image
   const [loading, setLoading] = useState(true);
@@ -60,28 +66,123 @@ function PhotoTemplate() {
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = "high";
 
+    //template
     const bgImage = new Image();
+
+    //shots
     const image1 = new Image();
     const image2 = new Image();
     const image3 = new Image();
-    bgImage.src = template;
+    const image4 = new Image();
+
+    //elements for first template
+    const flower = new Image();
+    const sign = new Image();
+    const fabric = new Image();
+    const star = new Image();
+    const leftStar = new Image();
+
+    if (option === 0) bgImage.src = firstTemplate;
+    if (option === 1) bgImage.src = secondTemplate;
+    if (option === 2) bgImage.src = thirdTemplate;
+
     image1.src = images[0];
     image2.src = images[1];
     image3.src = images[2];
+    image4.src = images[3];
+
+    flower.src = flowerElement;
+    sign.src = signElement;
+    fabric.src = fabricElement;
+    star.src = starElement;
+    leftStar.src = leftStarElement;
 
     bgImage.onload = () => {
       ctx.drawImage(bgImage, 0, 0, 400, 600);
 
-      ctx.drawImage(image1, 21, 82, 164, 117);
-      ctx.drawImage(image2, 21, 205.5, 164, 117);
-      ctx.drawImage(image3, 21, 329, 164, 117);
+      if (option === 0) {
+        drawImageCover(ctx, image1, 6, 24.5, 184, 120);
+        drawImageCover(ctx, image2, 6, 150.5, 184, 120);
+        drawImageCover(ctx, image3, 6, 274.5, 184, 120);
+        drawImageCover(ctx, image4, 6, 400.5, 184, 120);
 
-      ctx.drawImage(image1, 225, 82, 164, 117);
-      ctx.drawImage(image2, 225, 205.5, 164, 117);
-      ctx.drawImage(image3, 225, 329, 164, 117);
+        drawImageCover(ctx, image1, 209, 24.5, 184, 120);
+        drawImageCover(ctx, image2, 209, 150.5, 184, 120);
+        drawImageCover(ctx, image3, 209, 274.5, 184, 120);
+        drawImageCover(ctx, image4, 209, 400.5, 184, 120);
+
+        ctx.drawImage(fabric, -4, 10, 60, 40);
+        ctx.drawImage(fabric, 199, 10, 60, 40);
+
+        ctx.drawImage(star, 170, 43, 35, 35);
+        ctx.drawImage(star, 376, 43, 35, 35);
+
+        ctx.drawImage(leftStar, -10, 128, 45, 45);
+        ctx.drawImage(leftStar, 196, 128, 45, 45);
+
+        drawImageCover(ctx, sign, 70, 255, 55, 20);
+        drawImageCover(ctx, sign, 275, 255, 55, 20);
+
+        ctx.drawImage(flower, -13, 357, 50, 50);
+        ctx.drawImage(flower, 193, 357, 50, 50);
+
+        ctx.drawImage(star, 166, 472, 40, 40);
+        ctx.drawImage(star, 370, 472, 40, 40);
+      }
+
+      if (option === 1) {
+        drawImageCover(ctx, image1, 6, 131, 184, 104.5);
+        drawImageCover(ctx, image2, 6, 236, 184, 104.5);
+        drawImageCover(ctx, image3, 6, 341, 184, 104.5);
+        drawImageCover(ctx, image4, 6, 446, 184, 104.5);
+
+        drawImageCover(ctx, image1, 210, 131, 184, 104.5);
+        drawImageCover(ctx, image2, 210, 236, 184, 104.5);
+        drawImageCover(ctx, image3, 210, 341, 184, 104.5);
+        drawImageCover(ctx, image4, 210, 446, 184, 104.5);
+      }
+
+      if (option === 2) {
+        drawImageCover(ctx, image1, 8.5, 43, 183.5, 113);
+        drawImageCover(ctx, image1, 8.5, 158.5, 183.5, 113);
+        drawImageCover(ctx, image1, 8.5, 274, 183.5, 113);
+        drawImageCover(ctx, image1, 8.5, 389.5, 183.5, 113);
+
+        drawImageCover(ctx, image1, 208.5, 15, 184, 113);
+        drawImageCover(ctx, image2, 208.5, 131, 184, 113);
+        drawImageCover(ctx, image3, 208.5, 275, 184, 113);
+        drawImageCover(ctx, image4, 208.5, 390, 184, 113);
+      }
     };
   }, [loading]);
 
+  function drawImageCover(
+    ctx: CanvasRenderingContext2D,
+    img: any,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+  ) {
+    const imgRatio = img.naturalWidth / img.naturalHeight;
+    const boxRatio = w / h;
+
+    let sx, sy, sw, sh;
+
+    if (imgRatio > boxRatio) {
+      sh = img.naturalHeight;
+      sw = sh * boxRatio;
+      sx = (img.naturalWidth - sw) / 2;
+      sy = 0;
+    } else {
+      sw = img.naturalWidth;
+      sh = sw / boxRatio;
+      sx = 0;
+      sy = (img.naturalHeight - sh) / 2;
+    }
+
+    ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+  }
   const reactToPrintFn = useReactToPrint({
     contentRef: contentRef,
   });
