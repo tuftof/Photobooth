@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import firstTemplate from "../images/firstTemplate.png";
 import secondTemplate from "../images/secondTemplate.png";
