@@ -7,8 +7,8 @@ import countdownSound from "../audio/countdown.mp3";
 import captureSound from "../audio/captureSound.mp3";
 
 const videoConstraints = {
-  width: 940,
-  height: 580,
+  width: 900,
+  height: 600,
   facingMode: "user",
 };
 
@@ -20,8 +20,11 @@ function Photobooth() {
   const webcamRef = React.useRef<Webcam>(null);
   const [captureStatus, setCaptureStatus] = useState(false);
 
+  const [buttonIndicator, setButtonIndicator] = useState<boolean>(true);
+
   const captureCountdown = (index: number, retake: boolean) => {
     setCaptureStatus(true);
+    setButtonIndicator(false);
     let seconds = 5;
     setRemaining(seconds);
 
@@ -41,6 +44,7 @@ function Photobooth() {
         setCaptureStatus(false);
         setRemaining(0);
         capture(retake, index);
+        setButtonIndicator(true);
       }
     }, 1000);
   };
@@ -96,7 +100,7 @@ function Photobooth() {
         </div>
 
         <button
-          disabled={imgSrc.length >= 4}
+          disabled={!buttonIndicator || imgSrc.length >= 4}
           onClick={() => captureCountdown(-1, false)}
           className="border-1 rounded-l bg-yellow-300 w-20 flex justify-center p-2 hover:bg-yellow-400 mt-2"
         >
@@ -210,7 +214,6 @@ function Photobooth() {
         </div>
         {imgSrc.length === 4 && (
           <button
-            disabled={captureStatus}
             className="w-70 flex text-black justify-center text-l font-bold hover:bg-yellow-400 items-center 
                 bg-yellow-500 rounded-xl h-10 gap-1 mt-5 self-center "
             onClick={() => {

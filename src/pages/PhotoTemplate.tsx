@@ -101,15 +101,15 @@ function PhotoTemplate() {
       ctx.drawImage(bgImage, 0, 0, 400, 600);
 
       if (option === 0) {
-        drawImageCover(ctx, image1, 6, 24.5, 184, 120);
-        drawImageCover(ctx, image2, 6, 150.5, 184, 120);
-        drawImageCover(ctx, image3, 6, 274.5, 184, 120);
-        drawImageCover(ctx, image4, 6, 400.5, 184, 120);
+        drawImageCover(ctx, image1, 6.5, 27, 184.4, 116.5);
+        drawImageCover(ctx, image2, 6.5, 148, 184.4, 116.5);
+        drawImageCover(ctx, image3, 6.5, 268.5, 184.4, 116.5);
+        drawImageCover(ctx, image4, 6.5, 389.5, 184.4, 116.5);
 
-        drawImageCover(ctx, image1, 209, 24.5, 184, 120);
-        drawImageCover(ctx, image2, 209, 150.5, 184, 120);
-        drawImageCover(ctx, image3, 209, 274.5, 184, 120);
-        drawImageCover(ctx, image4, 209, 400.5, 184, 120);
+        drawImageCover(ctx, image1, 209, 27, 184.4, 116.5);
+        drawImageCover(ctx, image2, 209, 148, 184.4, 116.5);
+        drawImageCover(ctx, image3, 209, 268.5, 184.4, 116.5);
+        drawImageCover(ctx, image4, 209, 389.5, 184.4, 116.5);
 
         ctx.drawImage(fabric, -4, 10, 60, 40);
         ctx.drawImage(fabric, 199, 10, 60, 40);
@@ -117,8 +117,8 @@ function PhotoTemplate() {
         ctx.drawImage(star, 170, 43, 35, 35);
         ctx.drawImage(star, 376, 43, 35, 35);
 
-        ctx.drawImage(leftStar, -10, 128, 45, 45);
-        ctx.drawImage(leftStar, 196, 128, 45, 45);
+        ctx.drawImage(leftStar, -9, 128, 45, 45);
+        ctx.drawImage(leftStar, 197, 128, 45, 45);
 
         drawImageCover(ctx, sign, 70, 255, 55, 20);
         drawImageCover(ctx, sign, 275, 255, 55, 20);
@@ -128,30 +128,33 @@ function PhotoTemplate() {
 
         ctx.drawImage(star, 166, 472, 40, 40);
         ctx.drawImage(star, 370, 472, 40, 40);
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(196, 0, 7, 600);
       }
 
       if (option === 1) {
-        drawImageCover(ctx, image1, 6, 131, 184, 104.5);
-        drawImageCover(ctx, image2, 6, 236, 184, 104.5);
-        drawImageCover(ctx, image3, 6, 341, 184, 104.5);
-        drawImageCover(ctx, image4, 6, 446, 184, 104.5);
+        drawImageCover(ctx, image1, 6.8, 143, 183.6, 100);
+        drawImageCover(ctx, image2, 6.8, 247, 183.6, 100);
+        drawImageCover(ctx, image3, 6.8, 350.7, 183.6, 100);
+        drawImageCover(ctx, image4, 6.8, 454.5, 183.6, 100);
 
-        drawImageCover(ctx, image1, 210, 131, 184, 104.5);
-        drawImageCover(ctx, image2, 210, 236, 184, 104.5);
-        drawImageCover(ctx, image3, 210, 341, 184, 104.5);
-        drawImageCover(ctx, image4, 210, 446, 184, 104.5);
+        drawImageCover(ctx, image1, 210, 143, 183.6, 100);
+        drawImageCover(ctx, image2, 210, 247, 183.6, 100);
+        drawImageCover(ctx, image3, 210, 350.7, 183.6, 100);
+        drawImageCover(ctx, image4, 210, 454.5, 183.6, 100);
       }
 
       if (option === 2) {
-        drawImageCover(ctx, image1, 8.5, 43, 183.5, 113);
-        drawImageCover(ctx, image1, 8.5, 158.5, 183.5, 113);
-        drawImageCover(ctx, image1, 8.5, 274, 183.5, 113);
-        drawImageCover(ctx, image1, 8.5, 389.5, 183.5, 113);
+        drawImageCover(ctx, image1, 8.3, 43, 183.5, 113);
+        drawImageCover(ctx, image2, 8.3, 158.5, 183.5, 113);
+        drawImageCover(ctx, image3, 8.3, 274, 183.5, 113);
+        drawImageCover(ctx, image4, 8.3, 389.5, 183.5, 113);
 
-        drawImageCover(ctx, image1, 208.5, 15, 184, 113);
-        drawImageCover(ctx, image2, 208.5, 131, 184, 113);
-        drawImageCover(ctx, image3, 208.5, 275, 184, 113);
-        drawImageCover(ctx, image4, 208.5, 390, 184, 113);
+        drawImageCover(ctx, image1, 208.5, 15, 184.2, 113);
+        drawImageCover(ctx, image2, 208.5, 131, 184.2, 113);
+        drawImageCover(ctx, image3, 208.5, 275, 184.2, 113);
+        drawImageCover(ctx, image4, 208.5, 391.1, 184.2, 113);
       }
     };
   }, [loading]);
