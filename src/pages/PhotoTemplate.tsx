@@ -11,6 +11,7 @@ import thirdTemplate from "../images/thirdTemplate.png";
 import LoadingPage from "../pages/LoadingPage";
 import { useReactToPrint } from "react-to-print";
 import { MdPrint, MdDownload, MdCamera } from "react-icons/md";
+import QRCode from "qrcode";
 
 function PhotoTemplate() {
   //passing the images
@@ -87,8 +88,11 @@ function PhotoTemplate() {
     if (option === 2) bgImage.src = thirdTemplate;
 
     image1.src = images[0];
+
     image2.src = images[1];
+
     image3.src = images[2];
+
     image4.src = images[3];
 
     flower.src = flowerElement;
@@ -97,7 +101,7 @@ function PhotoTemplate() {
     star.src = starElement;
     leftStar.src = leftStarElement;
 
-    bgImage.onload = () => {
+    bgImage.onload = async () => {
       ctx.drawImage(bgImage, 0, 0, 400, 600);
 
       if (option === 0) {
@@ -134,15 +138,15 @@ function PhotoTemplate() {
       }
 
       if (option === 1) {
-        drawImageCover(ctx, image1, 6.8, 143, 183.6, 100);
-        drawImageCover(ctx, image2, 6.8, 247, 183.6, 100);
-        drawImageCover(ctx, image3, 6.8, 350.7, 183.6, 100);
-        drawImageCover(ctx, image4, 6.8, 454.5, 183.6, 100);
+        drawImageCover(ctx, image1, 6.8, 143, 183.6, 101);
+        drawImageCover(ctx, image2, 6.8, 247, 183.6, 101);
+        drawImageCover(ctx, image3, 6.8, 350.7, 183.6, 101);
+        drawImageCover(ctx, image4, 6.8, 454.5, 183.6, 101);
 
-        drawImageCover(ctx, image1, 210, 143, 183.6, 100);
-        drawImageCover(ctx, image2, 210, 247, 183.6, 100);
-        drawImageCover(ctx, image3, 210, 350.7, 183.6, 100);
-        drawImageCover(ctx, image4, 210, 454.5, 183.6, 100);
+        drawImageCover(ctx, image1, 210, 143, 183.6, 101);
+        drawImageCover(ctx, image2, 210, 247, 183.6, 101);
+        drawImageCover(ctx, image3, 210, 350.7, 183.6, 101);
+        drawImageCover(ctx, image4, 210, 454.5, 183.6, 101);
       }
 
       if (option === 2) {
@@ -156,8 +160,52 @@ function PhotoTemplate() {
         drawImageCover(ctx, image3, 208.5, 275, 184.2, 113);
         drawImageCover(ctx, image4, 208.5, 391.1, 184.2, 113);
       }
+
+      const uploadedUrl = await upload();
+      const qr = new Image();
+
+      const dataUrl = await QRCode.toDataURL(uploadedUrl, {
+        width: 300,
+        margin: 2,
+        errorCorrectionLevel: "H",
+      });
+
+      await new Promise<void>((resolve, reject) => {
+        qr.onload = () => resolve();
+        qr.onerror = reject;
+        qr.src = dataUrl;
+      });
+
+      ctx.drawImage(qr, 150, 530, 50, 50);
     };
   }, [loading]);
+
+  const upload = async (): Promise<string> => {
+    const canvas = canvasRef.current;
+    if (!canvas) throw new Error("Canvas not ready");
+
+    // 1. Convert canvas to blob (promisified)
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob((b) => {
+        if (b) resolve(b);
+        else reject(new Error("Canvas is empty"));
+      }, "image/png");
+    });
+
+    // 2. Upload
+    const formData = new FormData();
+    formData.append("file", blob, "photo.png");
+    formData.append("upload_preset", "Photobooth");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/qwy54ilu/image/upload",
+      { method: "POST", body: formData },
+    );
+    if (!res.ok) throw new Error("Upload failed");
+
+    const data = await res.json();
+    return data.secure_url as string;
+  };
 
   function drawImageCover(
     ctx: CanvasRenderingContext2D,

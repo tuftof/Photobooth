@@ -9,7 +9,7 @@ import captureSound from "../audio/captureSound.mp3";
 const videoConstraints = {
   width: 900,
   height: 600,
-  facingMode: "user",
+  facingMode: { exact: "user" },
 };
 
 function Photobooth() {
@@ -190,7 +190,7 @@ function Photobooth() {
           <div
             className="relative group  h-40 w-55 bg-black shadow-xl/30 rounded-xl"
             onClick={() => {
-              captureCountdown(2, true);
+              captureCountdown(3, true);
             }}
           >
             {imgSrc[3] && (
