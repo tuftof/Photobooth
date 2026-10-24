@@ -9,7 +9,7 @@ import captureSound from "../audio/captureSound.mp3";
 const videoConstraints = {
   width: 1100,
   height: 650,
-  facingMode: { exact: "user" },
+  facingMode: "user",
 };
 
 function Photobooth() {
