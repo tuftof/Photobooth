@@ -102,8 +102,6 @@ function PhotoTemplate() {
         drawImageCover(ctx, image1, 212.5, 87, 175, 127.5);
         drawImageCover(ctx, image2, 212.5, 246, 175, 127.5);
         drawImageCover(ctx, image3, 212.5, 404.5, 175, 127.5);
-
-        ctx.drawImage(day1, 0, 0, 400, 600);
       }
 
       if (option === 1) {
@@ -114,8 +112,6 @@ function PhotoTemplate() {
         drawImageCover(ctx, image1, 209.6, 88.2, 180.8, 133);
         drawImageCover(ctx, image2, 209.6, 248, 180.8, 133);
         drawImageCover(ctx, image3, 209.6, 410, 180.8, 133);
-
-        ctx.drawImage(day2, 0, 0, 400, 600);
       }
 
       const uploadedUrl = await upload();
@@ -133,8 +129,18 @@ function PhotoTemplate() {
         qr.src = dataUrl;
       });
 
-      ctx.drawImage(qr, 152, 550, 40, 40);
-      ctx.drawImage(qr, 352, 550, 40, 40);
+      if (option === 0) {
+        ctx.drawImage(day1, 0, 0, 400, 600);
+
+        ctx.drawImage(qr, 152, 550, 40, 40);
+        ctx.drawImage(qr, 352, 550, 40, 40);
+      }
+      if (option === 1) {
+        ctx.drawImage(day2, 0, 0, 400, 600);
+
+        ctx.drawImage(qr, 157, 553, 35, 35);
+        ctx.drawImage(qr, 357, 553, 35, 35);
+      }
     };
   }, [loading]);
 
