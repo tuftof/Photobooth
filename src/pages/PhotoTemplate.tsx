@@ -111,6 +111,7 @@ function PhotoTemplate() {
         drawImageCover(ctx, image1, 212.5, 87, 175, 127.5);
         drawImageCover(ctx, image2, 212.5, 246, 175, 127.5);
         drawImageCover(ctx, image3, 212.5, 404.5, 175, 127.5);
+        ctx.drawImage(day1, 0, 0, 400, 600);
       }
 
       if (option === 1) {
@@ -121,6 +122,7 @@ function PhotoTemplate() {
         drawImageCover(ctx, image1, 209.6, 88.2, 180.8, 133);
         drawImageCover(ctx, image2, 209.6, 248, 180.8, 133);
         drawImageCover(ctx, image3, 209.6, 410, 180.8, 133);
+        ctx.drawImage(day2, 0, 0, 400, 600);
       }
       if (option === 2) {
         drawImageCover(ctx, image1, 8.2, 27.5, 182.3, 145.7);
@@ -130,6 +132,7 @@ function PhotoTemplate() {
         drawImageCover(ctx, image1, 209.6, 28, 182.3, 146);
         drawImageCover(ctx, image2, 209.6, 180, 182.3, 145.7);
         drawImageCover(ctx, image3, 209.6, 331.6, 182.3, 146);
+        ctx.drawImage(aces, 0, 0, 400, 600);
       }
 
       const uploadedUrl = await upload();
@@ -148,21 +151,15 @@ function PhotoTemplate() {
       });
 
       if (option === 0) {
-        ctx.drawImage(day1, 0, 0, 400, 600);
-
         ctx.drawImage(qr, 152, 550, 40, 40);
         ctx.drawImage(qr, 352, 550, 40, 40);
       }
 
       if (option === 1) {
-        ctx.drawImage(day2, 0, 0, 400, 600);
-
         ctx.drawImage(qr, 157, 553, 35, 35);
         ctx.drawImage(qr, 357, 553, 35, 35);
       }
       if (option === 2) {
-        ctx.drawImage(aces, 0, 0, 400, 600);
-
         ctx.drawImage(qr, 160, 560, 30, 30);
         ctx.drawImage(qr, 360, 560, 30, 30);
       }
