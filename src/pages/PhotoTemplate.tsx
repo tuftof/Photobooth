@@ -1,11 +1,17 @@
 import { useRef, useCallback, useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 
+//CPEYESTA
 import day1Template from "../images/day1Template.png";
 import day2Template from "../images/day2Template.png";
 
 import day1Elements from "../images/day1Elements.png";
 import day2Elements from "../images/day2Elements.png";
+
+//ACES
+import acesTemplate from "../images/acesTemplate.png";
+import acesElements from "../images/acesElements.png";
+
 import LoadingPage from "../pages/LoadingPage";
 import { useReactToPrint } from "react-to-print";
 import { MdPrint, MdDownload, MdCamera } from "react-icons/md";
@@ -77,13 +83,16 @@ function PhotoTemplate() {
 
     const day1 = new Image();
     const day2 = new Image();
+    const aces = new Image();
 
     day1.src = day1Elements;
     day2.src = day2Elements;
+    aces.src = acesElements;
 
     //bgImage
     if (option === 0) bgImage.src = day1Template;
     if (option === 1) bgImage.src = day2Template;
+    if (option === 2) bgImage.src = acesTemplate;
 
     image1.src = images[0];
 
@@ -113,6 +122,15 @@ function PhotoTemplate() {
         drawImageCover(ctx, image2, 209.6, 248, 180.8, 133);
         drawImageCover(ctx, image3, 209.6, 410, 180.8, 133);
       }
+      if (option === 2) {
+        drawImageCover(ctx, image1, 8.2, 27.5, 182.3, 145.7);
+        drawImageCover(ctx, image2, 8.2, 179.5, 182.3, 145.7);
+        drawImageCover(ctx, image3, 8.2, 331.2, 182.3, 145.7);
+
+        drawImageCover(ctx, image1, 209.6, 28, 182.3, 146);
+        drawImageCover(ctx, image2, 209.6, 180, 182.3, 145.7);
+        drawImageCover(ctx, image3, 209.6, 331.6, 182.3, 146);
+      }
 
       const uploadedUrl = await upload();
       const qr = new Image();
@@ -135,15 +153,23 @@ function PhotoTemplate() {
         ctx.drawImage(qr, 152, 550, 40, 40);
         ctx.drawImage(qr, 352, 550, 40, 40);
       }
+
       if (option === 1) {
         ctx.drawImage(day2, 0, 0, 400, 600);
 
         ctx.drawImage(qr, 157, 553, 35, 35);
         ctx.drawImage(qr, 357, 553, 35, 35);
       }
+      if (option === 2) {
+        ctx.drawImage(aces, 0, 0, 400, 600);
+
+        ctx.drawImage(qr, 160, 560, 30, 30);
+        ctx.drawImage(qr, 360, 560, 30, 30);
+      }
     };
   }, [loading]);
 
+  //upload photostrip function
   const upload = async (): Promise<string> => {
     const canvas = canvasRef.current;
     if (!canvas) throw new Error("Canvas not ready");

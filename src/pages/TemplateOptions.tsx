@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import cpeyestaday1 from "../images/cpeyestaday1.png";
 import cpeyestaday2 from "../images/cpeyestaday2.png";
-
+import aces from "../images/aces.png";
 function TemplateOptions() {
   const location = useLocation();
   const images = location.state;
@@ -32,6 +32,16 @@ function TemplateOptions() {
         >
           <img
             src={cpeyestaday2}
+            style={{ width: 350, height: 500 }}
+            className=" object-fit "
+          />
+        </div>
+        <div
+          onClick={() => selectTemplate(2)}
+          className="flex animate-pulse space-x-4 hover:scale-105 ease-in duration-200"
+        >
+          <img
+            src={aces}
             style={{ width: 350, height: 500 }}
             className=" object-fit "
           />
