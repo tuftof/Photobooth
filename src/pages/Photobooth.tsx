@@ -7,9 +7,9 @@ import countdownSound from "../audio/countdown.mp3";
 import captureSound from "../audio/captureSound.mp3";
 
 const videoConstraints = {
-  width: 1100,
-  height: 650,
-  facingMode: "user",
+  width: 1050,
+  height: 730,
+  facingMode: "environment",
 };
 
 function Photobooth() {
@@ -94,7 +94,6 @@ function Photobooth() {
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            mirrored={true}
             videoConstraints={videoConstraints}
           />
         </div>
@@ -116,6 +115,8 @@ function Photobooth() {
           <div
             className="relative group h-45 w-70 bg-black shadow-xl/30 rounded-xl"
             onClick={() => {
+              if (captureStatus) return;
+
               captureCountdown(0, true);
             }}
           >
@@ -141,6 +142,8 @@ function Photobooth() {
           <div
             className="relative group h-45 w-70 bg-black shadow-xl/30 rounded-xl"
             onClick={() => {
+              if (captureStatus) return;
+
               captureCountdown(1, true);
             }}
           >
@@ -166,6 +169,7 @@ function Photobooth() {
           <div
             className="relative group h-45 w-70 bg-black shadow-xl/30 rounded-xl"
             onClick={() => {
+              if (captureStatus) return;
               captureCountdown(2, true);
             }}
           >
